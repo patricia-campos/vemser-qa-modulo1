@@ -233,7 +233,10 @@ public class PessoaAceitacao {
     @Test
     public void consultarPessoaRelatorioComSucesso() throws IOException {
 
-        PessoaRelatorioDTO[] resultService = pessoaService.consultarPessoaRelatorioComSucesso(798);
+        // Adição:
+        PessoaDTO resulService = adicionarPessoaJson();
+
+        PessoaRelatorioDTO[] resultService = pessoaService.consultarPessoaRelatorioComSucesso(Integer.parseInt(resulService.getIdPessoa()));
 
         // Validação:
         Assert.assertEquals(resultService[0].getNomePessoa(), "Gabriel Luppi");
@@ -266,10 +269,14 @@ public class PessoaAceitacao {
     @Test
     public void consultarPessoaCompletaComSucesso() throws IOException {
 
-        PessoaCompletaDTO[] resultService = pessoaService.consultarPessoaCompletaComSucesso(1);
+        PessoaDTO resultService = adicionarPessoaJson();
+
+        PessoaCompletaDTO[] resulService = pessoaService.consultarPessoaCompletaComSucesso(Integer.parseInt(resultService.getIdPessoa()));
+
+        //PessoaCompletaDTO[] resultService = pessoaService.consultarPessoaCompletaComSucesso(1);
 
         // Validação:
-        Assert.assertEquals(resultService[0].getNome(), "Gabriel Luppi");
+        Assert.assertEquals(resulService[0].getNome(), "Gabriel Luppi");
     }
 
     // Teste realizado com a busca sem o parâmetro:
@@ -309,10 +316,10 @@ public class PessoaAceitacao {
     @Test
     public void consultarPessoaEnderecoComSucesso() throws IOException {
 
-        PessoaEnderecoDTO[] resultService = pessoaService.consultarPessoaEnderecoComSucesso(1);
+        PessoaEnderecoDTO[] resultService = pessoaService.consultarPessoaEnderecoComSucesso(4);
 
         // Validação:
-        Assert.assertEquals(resultService[0].getNome(), "Kaique Ceratinho");
+        Assert.assertEquals(resultService[0].getNome(), "Harry Potter");
     }
 
     // Teste realizado com a busca sem parâmetro:
@@ -351,10 +358,10 @@ public class PessoaAceitacao {
     @Test
     public void consultarPessoaContatoComSucesso() throws IOException {
 
-        PessoaContatoDTO[] resultService = pessoaService.consultarPessoaContatoComSucesso(1);
+        PessoaContatoDTO[] resultService = pessoaService.consultarPessoaContatoComSucesso(4);
 
         // Validação:
-        Assert.assertEquals(resultService[0].getNome(), "Kaique Ceratinho");
+        Assert.assertEquals(resultService[0].getNome(), "Harry Potter");
     }
 
     // Teste realizado com a busca sem parâmetro:
@@ -395,7 +402,7 @@ public class PessoaAceitacao {
         PessoaDTO[] resultService = pessoaService.consultarPessoaNomeComSucesso("Gabriel");
 
         // Validação:
-        Assert.assertEquals(resultService[2].getNome(), "Gabriel Luppi");
+        Assert.assertEquals(resultService[2].getNome(), "gabriel");
     }
 
     //------------------------------------------------------------------------------------------------------------------
